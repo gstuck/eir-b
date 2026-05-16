@@ -419,25 +419,27 @@ button { font-family: inherit; cursor: pointer; }
 .theme-section:nth-of-type(3) .convo-card:nth-child(4n+3) { background: var(--ink-pink); color: var(--paper); }
 
 .convo-short {
-  font-family: 'JetBrains Mono', 'Space Grotesk', monospace;
-  font-size: 10.5px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  display: inline-block;
-  padding: 4px 8px;
-  border: 1.5px solid currentColor;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  text-transform: none;
+  display: block;
+  padding: 0;
+  border: none;
   background: transparent;
-  margin-bottom: 1rem;
-  align-self: flex-start;
+  margin: 0 0 0.5rem;
+  line-height: 1.15;
+  align-self: stretch;
 }
 
 .convo-question {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.25rem;
-  line-height: 1.2;
-  font-weight: 600;
-  letter-spacing: -0.015em;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  letter-spacing: 0;
   display: block;
   flex: 1;
 }
@@ -1111,4 +1113,308 @@ button { font-family: inherit; cursor: pointer; }
   .site-header, .site-footer, .prep-zone, .video-modal { display: none; }
   body { background: white; color: black; }
   .section, .convo-card, .tip { box-shadow: none; border: 1.5px solid black; }
+}
+
+/* ============================================================
+   ALT DETAIL PAGE — hero with action stack, tabbed phases
+   ============================================================ */
+
+/* HERO with two-column layout: text left, button stack right */
+.detail-hero.alt {
+  padding: 3rem 2rem 3.5rem;
+}
+.detail-hero.alt::before, .detail-hero.alt::after { display: none; } /* drop the deco circles */
+.detail-hero-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 3.5rem;
+  align-items: start;
+  text-align: left;
+  position: relative;
+  z-index: 1;
+}
+.detail-hero.alt .hero-theme {
+  margin-bottom: 1.25rem;
+  margin-left: 0;
+  margin-right: 0;
+  max-width: none;
+  text-align: left;
+}
+.detail-hero.alt h1 {
+  text-align: left;
+  margin: 0 0 1.25rem;
+  max-width: none;
+  font-size: clamp(2rem, 4.4vw, 3.1rem);
+  line-height: 1.05;
+}
+.detail-hero.alt .overview {
+  text-align: left;
+  margin: 0;
+  max-width: 58ch;
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+/* Right column: vertical stack of action buttons */
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: stretch;
+}
+.hero-actions .hero-action-btn {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.85rem 1.1rem;
+  background: var(--paper);
+  color: var(--ink);
+  text-decoration: none;
+  border: 2px solid var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.12s ease;
+  box-shadow: 3px 3px 0 var(--ink);
+  justify-content: flex-start;
+}
+.hero-actions .hero-action-btn:nth-child(1) { background: var(--ink-yellow); }
+.hero-actions .hero-action-btn:nth-child(2) { background: var(--ink-pink); color: var(--paper); }
+.hero-actions .hero-action-btn:nth-child(3) { background: var(--ink-green); color: var(--paper); }
+.hero-actions .hero-action-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--ink);
+  text-decoration: none;
+}
+.hero-actions .hero-action-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+/* ============================================================
+   PHASE TABS
+   ============================================================ */
+
+.phase-tabs-wrap {
+  max-width: 960px;
+  margin: 2.5rem auto 0;
+  padding: 0 1.5rem;
+}
+
+.phase-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  background: var(--paper);
+  border: var(--border-w) solid var(--ink);
+  position: relative;
+}
+.phase-tab {
+  background: var(--paper);
+  border: none;
+  border-right: var(--border-w) solid var(--ink);
+  padding: 1rem 0.75rem 1.1rem;
+  cursor: pointer;
+  font-family: 'Space Grotesk', sans-serif;
+  text-align: center;
+  transition: background 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: var(--ink);
+}
+.phase-tab:last-child { border-right: none; }
+.phase-tab:hover { background: rgba(0,0,0,0.04); }
+.phase-tab-label {
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+.phase-tab-time {
+  font-family: 'JetBrains Mono', 'Space Grotesk', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+  line-height: 1;
+  opacity: 0.85;
+}
+
+/* Active tab — filled with the phase color */
+.phase-tab[data-phase="observe"].is-active { background: var(--ink-pink);   color: var(--paper); }
+.phase-tab[data-phase="discuss"].is-active { background: var(--ink-blue);   color: var(--paper); }
+.phase-tab[data-phase="relate"].is-active  { background: var(--ink-green);  color: var(--paper); }
+.phase-tab[data-phase="commit"].is-active  { background: var(--ink-purple); color: var(--paper); }
+.phase-tab.is-active .phase-tab-time { color: rgba(255,255,255,0.9); }
+
+/* PROGRESS LINE under the tab strip */
+.phase-progress-line {
+  height: 4px;
+  background: var(--paper-deep);
+  position: relative;
+  overflow: hidden;
+  border-left: var(--border-w) solid var(--ink);
+  border-right: var(--border-w) solid var(--ink);
+  border-bottom: var(--border-w) solid var(--ink);
+}
+.phase-progress-fill {
+  height: 100%;
+  background: var(--ink);
+  width: 25%; /* default Observe = 25% */
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.phase-progress-fill[data-phase="observe"] { width: 25%; }
+.phase-progress-fill[data-phase="discuss"] { width: 50%; }
+.phase-progress-fill[data-phase="relate"]  { width: 75%; }
+.phase-progress-fill[data-phase="commit"]  { width: 100%; }
+
+/* Phase panel — wraps the content of one phase */
+.phase-panels {
+  max-width: 960px;
+  margin: 2rem auto 0;
+  padding: 0 1.5rem;
+}
+.phase-panel {
+  display: none;
+}
+.phase-panel.is-active {
+  display: block;
+  animation: phaseFadeIn 0.25s ease-out;
+}
+@keyframes phaseFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.phase-panel-inner {
+  background: var(--paper);
+  border: var(--border-w) solid var(--ink);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+  padding: 2rem 1.75rem;
+}
+
+/* Phase panel question list (reusing the existing .questions counter style) */
+.phase-panel .questions { margin-top: 0; }
+
+/* Observe panel has a two-column grid: questions | spark thumb */
+.observe-grid {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Spark thumbnail tile (alt version) */
+.spark-tile {
+  display: block;
+  background: var(--ink);
+  border: 2px solid var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  padding: 1rem;
+  box-shadow: 4px 4px 0 var(--ink-pink);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.spark-tile:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink-pink);
+  text-decoration: none;
+}
+.spark-tile-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: var(--ink-blue);
+  border: 2px solid var(--paper);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+}
+.spark-tile-thumb-pdf { background: var(--ink-yellow); }
+.spark-tile-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.05) saturate(1.1);
+}
+/* Play icon overlay on video tiles */
+.spark-tile-play {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--ink-yellow);
+  color: var(--ink);
+  border: 2.5px solid var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.spark-tile-play svg { margin-left: 2px; }
+
+.spark-tile-label {
+  font-family: 'JetBrains Mono', 'Space Grotesk', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-yellow);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.spark-tile-caption {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--paper);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+.spark-tile-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-yellow);
+}
+
+/* Responsive: stack hero columns and observe grid on narrower screens */
+@media (max-width: 880px) {
+  .detail-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .hero-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .hero-actions .hero-action-btn {
+    flex: 1 0 auto;
+  }
+  .observe-grid {
+    grid-template-columns: 1fr;
+  }
+  .spark-tile { max-width: 340px; margin: 0 auto; }
+}
+@media (max-width: 600px) {
+  .phase-tabs { grid-template-columns: repeat(2, 1fr); }
+  .phase-tab { border-right: var(--border-w) solid var(--ink); border-bottom: var(--border-w) solid var(--ink); }
+  .phase-tab:nth-child(2n) { border-right: none; }
+  .phase-tab:nth-child(3), .phase-tab:nth-child(4) { border-bottom: none; }
+  .phase-tab-label { font-size: 0.95rem; }
 }
