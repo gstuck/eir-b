@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convos with Colleagues</title>
+  <meta name="description" content="Roundtable discussions for math teachers serious about their craft.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+/* ============================================================
+   Convos with Colleagues — Fresh Style (Version B)
+   Risograph-zine. Saturated. Chunky. Loud-but-warm.
+   ============================================================ */
+
+:root {
+  /* "Ink layers" — risograph-style spot colors */
+  --ink-pink:    #FF3D7F;
+  --ink-blue:    #2E5BFF;
+  --ink-yellow:  #FFC23C;
+  --ink-green:   #2DBE6C;
+  --ink-purple:  #6B3FA0;
+  --ink-coral:   #FF6B3D;
+
+  /* Paper + ink */
+  --paper:       #F4EBDD;
+  --paper-deep:  #ECE0CC;
+  --ink:         #1A1A1A;
+  --ink-soft:    #3A3A3A;
+
+  /* Semantic */
+  --bg:          var(--paper);
+  --fg:          var(--ink);
+  --rule:        var(--ink);
+
+  --shadow-offset: 6px;
+  --border-w:    2.5px;
+}
+
+* , *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--fg);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Subtle paper texture via repeating gradient */
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255, 61, 127, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(46, 91, 255, 0.025) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+img { max-width: 100%; height: auto; display: block; }
+a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--ink-pink);
+}
+a:hover { text-decoration-color: var(--ink-blue); }
+button { font-family: inherit; cursor: pointer; }
+
+/* ============================================================
+   SITE CHROME
+   ============================================================ */
+
+.site-header {
+  border-bottom: var(--border-w) solid var(--ink);
+  background: var(--paper);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.site-header-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.site-logo:hover { color: var(--ink-pink); }
+.site-logo-mark {
+  color: var(--ink-pink);
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+}
+
+.site-nav {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: flex;
+  gap: 0;
+}
+.site-nav a {
+  color: var(--ink);
+  text-decoration: none;
+  padding: 0.5rem 0.9rem;
+  border: var(--border-w) solid transparent;
+  transition: all 0.12s ease;
+}
+.site-nav a:hover {
+  background: var(--ink-yellow);
+  border-color: var(--ink);
+}
+.site-nav a[aria-current="page"] {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.container { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+.container-wide { max-width: 1240px; margin: 0 auto; padding: 0 1.5rem; }
+
+.site-footer {
+  margin-top: 5rem;
+  padding: 2.5rem 2rem;
+  border-top: var(--border-w) solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   HOMEPAGE — HERO
+   ============================================================ */
+
+.home-hero {
+  background: var(--ink-yellow);
+  border-bottom: var(--border-w) solid var(--ink);
+  padding: 3.5rem 1.5rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.home-hero::before {
+  /* Big offset circle in the background, riso-style */
+  content: "";
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: var(--ink-pink);
+  mix-blend-mode: multiply;
+  opacity: 0.85;
+  top: -180px;
+  right: -120px;
+  z-index: 0;
+}
+.home-hero::after {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: var(--ink-blue);
+  mix-blend-mode: multiply;
+  opacity: 0.85;
+  bottom: -100px;
+  left: 8%;
+  z-index: 0;
+}
+.home-hero-grid {
+  position: relative;
+  z-index: 1;
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.home-hero-content h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  margin: 0 0 1.5rem;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+.home-hero-content .dek {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  font-weight: 500;
+  max-width: 30ch;
+  color: var(--ink);
+  margin: 0;
+}
+
+.hero-callout {
+  background: var(--paper);
+  border: var(--border-w) solid var(--ink);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+  position: relative;
+}
+.hero-callout-title {
+  font-family: 'JetBrains Mono', 'Space Grotesk', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-pink);
+  margin-bottom: 1rem;
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 0.5rem;
+}
+.hero-callout-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.hero-callout-list li {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 0.75rem;
+  align-items: start;
+}
+.hero-callout-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--ink-pink);
+  color: var(--paper);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--ink);
+}
+.hero-callout-list li:nth-child(2) .hero-callout-icon { background: var(--ink-blue); }
+.hero-callout-list li:nth-child(3) .hero-callout-icon { background: var(--ink-green); }
+.hero-callout-list strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+.hero-callout-list span {
+  font-size: 13.5px;
+  line-height: 1.4;
+  display: block;
+}
+
+.hero-stats {
+  position: relative;
+  z-index: 1;
+  max-width: 1240px;
+  margin: 3rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: var(--border-w) solid var(--ink);
+  background: var(--paper);
+}
+.hero-stat {
+  padding: 1.25rem 1rem;
+  text-align: center;
+  border-right: var(--border-w) solid var(--ink);
+}
+.hero-stat:last-child { border-right: none; }
+.hero-stat:nth-child(1) { background: var(--ink-pink); color: var(--paper); }
+.hero-stat:nth-child(2) { background: var(--ink-blue); color: var(--paper); }
+.hero-stat:nth-child(3) { background: var(--ink-green); color: var(--paper); }
+.hero-stat:nth-child(4) { background: var(--ink-purple); color: var(--paper); }
+.hero-stat-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.hero-stat-label {
+  font-family: 'JetBrains Mono', 'Space Grotesk', monospace;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-top: 0.4rem;
+  opacity: 0.95;
+}
+
+/* ============================================================
+   HOMEPAGE — THEME SECTIONS & CONVO GRID
+   ============================================================ */
+
+.theme-section {
+  margin: 4rem 0;
+}
+.theme-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: var(--border-w) solid var(--ink);
+}
+.theme-header h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0 0 0.75rem;
+  display: inline-block;
+  position: relative;
+}
+.theme-header h2::before {
+  content: "▮▮";
+  color: var(--ink-pink);
+  margin-right: 0.5rem;
+  font-size: 0.7em;
+  vertical-align: 0.15em;
+  letter-spacing: -0.2em;
+}
+.theme-section:nth-of-type(2) .theme-header h2::before { color: var(--ink-blue); }
+.theme-section:nth-of-type(3) .theme-header h2::before { color: var(--ink-green); }
+
+.theme-lesson {
+  font-family: 'JetBrains Mono', 'Space Grotesk', monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  line-height: 1.5;
+}
+.theme-lesson-icon {
+  display: inline-flex;
+  align-items: center;
+  color: var(--ink-pink);
+}
+.theme-section:nth-of-type(2) .theme-lesson-icon { color: var(--ink-blue); }
+.theme-section:nth-of-type(3) .theme-lesson-icon { color: var(--ink-green); }
+.theme-lesson-label {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  font-size: 11px;
+}
+.theme-lesson-link {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration-color: var(--ink-pink);
+}
+.theme-lesson-link em { font-style: normal; }
+.theme-section:nth-of-type(2) .theme-lesson-link { text-decoration-color: var(--ink-blue); }
+.theme-section:nth-of-type(3) .theme-lesson-link { text-decoration-color: var(--ink-green); }
+.theme-lesson-credit {
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 11px;
+}
+.theme-lesson-sep { color: var(--ink-soft); }
+
+.convo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.convo-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--ink);
+  padding: 1.5rem 1.4rem 1.4rem;
+  background: var(--ink-pink);
+  border: var(--border-w) solid var(--ink);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  min-height: 200px;
+}
+.convo-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: calc(var(--shadow-offset) + 3px) calc(var(--shadow-offset) + 3px) 0 var(--ink);
+}
+.convo-card:active {
+  transform: translate(2px, 2px);
+  box-shadow: calc(var(--shadow-offset) - 4px) calc(var(--shadow-offset) - 4px) 0 var(--ink);
+}
+
+/* Rotate the convo card colors */
+.theme-section:nth-of-type(1) .convo-card:nth-child(4n+1) { background: var(--ink-pink); color: var(--paper); }
+.theme-section:nth-of-type(1) .convo-card:nth-child(4n+2) { background: var(--ink-yellow); }
+.theme-section:nth-of-type(1) .convo-card:nth-child(4n+3) { background: var(--paper); }
+.theme-section:nth-of-type(1) .convo-card:nth-child(4n+4) { background: var(--ink-coral); color: var(--paper); }
+
+.theme-section:nth-of-type(2) .convo-card:nth-child(4n+1) { background: var(--ink-blue); color: var(--paper); }
+.theme-section:nth-of-type(2) .convo-card:nth-child(4n+2) { background: var(--paper); }
+.theme-section:nth-of-type(2) .convo-card:nth-child(4n+3) { background: var(--ink-purple); color: var(--paper); }
+.theme-section:nth-of-type(2) .convo-card:nth-child(4n+4) { background: var(--ink-yellow); }
+
+.theme-section:nth-of-type(3) .convo-card:nth-child(4n+1) { background: var(--ink-green); color: var(--paper); }
+.theme-section:nth-of-type(3) .convo-card:nth-child(4n+2) { background: var(--ink-yellow); }
+.theme-section:nth-of-type(3) .convo-card:nth-child(4n+3) { background: var(--ink-pink); color: var(--paper); }
+
+.convo-short {
+  font-family: 'JetBrains Mono', 'Space Grotesk', monospace;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  display: inline-block;
+  padding: 4px 8px;
+  border: 1.5px solid currentColor;
+  background: transparent;
+  margin-bottom: 1rem;
+  align-self: flex-start;
+}
+
+.convo-question {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  display: block;
+  flex: 1;
+}
+
+.convo-spark {
+  font-family: 'JetBrains Mono', 'Space Grotesk', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1.5px solid currentColor;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.85;
+}
+
+/* ============================================================
+   DETAIL PAGE
+   ============================================================ */
+
+.hero-meta {
+  font-family: 'JetBrains Mono', 'Space Grotesk', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+  margin: 0;
+  padding: 0.75rem 1.5rem;
+  background: var(--ink);
+  color: var(--paper);
+  border-bottom: var(--border-w) solid var(--ink);
+}
+.hero-meta span {
+  padding: 0 1rem;
+  border-right: 1.5px solid rgba(244, 235, 221, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.hero-meta span:last-child { border-right: none; }
+.hero-meta .num {
+  color: var(--ink-yellow);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.detail-hero {
+  padding: 3.5rem 1.5rem 3rem;
+  background: var(--ink-yellow);
+  border-bottom: var(--border-w) solid var(--ink);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.detail-hero::before {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: var(--ink-pink);
+  mix-blend-mode: multiply;
+  opacity: 0.92;
+  top: -200px;
+  right: -160px;
+  z-index: 0;
+}
+.detail-hero::after {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: var(--ink-blue);
+  mix-blend-mode: multiply;
+  opacity: 0.85;
+  bottom: -160px;
+  left: -120px;
+  z-index: 0;
+}
+.detail-hero > * { position: relative; z-index: 1; }
+.detail-hero .hero-theme {
+  font-family: 'JetBrains Mono', 'Space Grotesk', monospace;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--paper);
+  background: var(--ink);
+  display: inline-block;
+  padding: 7px 12px;
+  border: 2px solid var(--ink);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.detail-hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin: 0 auto 1.5rem;
+  max-width: 920px;
+  text-align: center;
+  text-transform: none;
+}
+.detail-hero .overview {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+/* PREP ZONE — three action buttons */
+.prep-zone {
+  margin: 2.5rem 0 1rem;
+  padding: 1.5rem;
+  background: var(--paper-deep);
+  border: var(--border-w) solid var(--ink);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink-blue);
+}
+.prep-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+.prep-action-btn {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.7rem 1.1rem;
+  background: var(--paper);
+  color: var(--ink);
+  text-decoration: none;
+  border: 2px solid var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.12s ease;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.prep-action-btn:nth-child(1) { background: var(--ink-yellow); }
+.prep-action-btn:nth-child(2) { background: var(--ink-pink); color: var(--paper); }
+.prep-action-btn:nth-child(3) { background: var(--ink-green); color: var(--paper); }
+.prep-action-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--ink);
+  text-decoration: none;
+}
+.prep-action-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+/* ============================================================
+   SECTIONS — Observe, Discuss, Relate, Commit
+   ============================================================ */
+
+.section {
+  margin: 2rem 0;
+  border: var(--border-w) solid var(--ink);
+  background: var(--paper);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+}
+.section-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--ink-pink);
+  color: var(--paper);
+  border: none;
+  border-bottom: var(--border-w) solid var(--ink);
+  text-align: left;
+  font-family: 'Space Grotesk', sans-serif;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+.section:nth-of-type(1) .section-header,
+#observe .section-header { background: var(--ink-pink); }
+#discuss .section-header { background: var(--ink-blue); }
+#relate .section-header { background: var(--ink-green); }
+#commit .section-header { background: var(--ink-purple); }
+
+.section-header h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin: 0;
+  flex: 1;
+  line-height: 1;
+}
+.section-time {
+  font-family: 'JetBrains Mono', 'Space Grotesk', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 4px 8px;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+}
+.section-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+  transition: transform 0.2s ease;
+}
+.section-collapsed .section-toggle { transform: rotate(-90deg); }
+.section-body {
+  padding: 1.75rem 1.5rem;
+  display: block;
+  background: var(--paper);
+}
+.section-collapsed .section-body { display: none; }
+.section-collapsed .section-header { border-bottom: none; }
+
+/* Questions list inside sections */
+.questions {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  counter-reset: q;
+}
+.questions li {
+  position: relative;
+  padding: 1rem 0 1rem 3.25rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  border-bottom: 1.5px dashed rgba(26, 26, 26, 0.18);
+  counter-increment: q;
+}
+.questions li:last-child { border-bottom: none; }
+.questions li::before {
+  content: counter(q, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--paper);
+  background: var(--ink);
+  padding: 4px 7px;
+  letter-spacing: 0.02em;
+}
+#observe .questions li::before { background: var(--ink-pink); }
+#discuss .questions li::before { background: var(--ink-blue); }
+#relate .questions li::before { background: var(--ink-green); }
+#commit .questions li::before { background: var(--ink-purple); }
+
+/* ============================================================
+   SPARK INSET (inside Observe section)
+   ============================================================ */
+
+.spark-inset {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.25rem;
+  background: var(--ink);
+  color: var(--paper);
+  border: 2px solid var(--ink);
+  margin: 0 0 1rem;
+  box-shadow: 4px 4px 0 var(--ink-pink);
+}
+.spark-inset-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: var(--ink-blue);
+  border: 2px solid var(--paper);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.spark-inset-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.05) saturate(1.1);
+}
+.spark-inset-thumb-pdf {
+  background: var(--ink-yellow);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+.spark-inset-thumb-pdf:hover { transform: scale(1.03); }
+
+/* Fanned-page graphic — keep but restyle for the new look */
+.fanned-page {
+  position: absolute;
+  width: 60%;
+  height: 75%;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px 6px;
+}
+.fanned-page-back {
+  transform: translate(-12%, -2%) rotate(-7deg);
+  background: var(--ink-pink);
+}
+.fanned-page-front {
+  transform: translate(8%, 4%) rotate(5deg);
+  z-index: 2;
+}
+.fanned-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.fanned-lines span {
+  height: 2px;
+  background: var(--ink);
+  width: 100%;
+}
+.fanned-lines span:nth-child(2) { width: 70%; }
+.fanned-lines span:nth-child(4) { width: 85%; }
+.fanned-lines span:nth-child(6) { width: 60%; }
+.fanned-page-back .fanned-lines span { background: var(--paper); opacity: 0.7; }
+
+.spark-play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--ink-yellow);
+  color: var(--ink);
+  border: 2.5px solid var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.12s ease;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.spark-play-button:hover {
+  transform: translate(calc(-50% - 2px), calc(-50% - 2px));
+  box-shadow: 5px 5px 0 var(--ink);
+}
+.spark-play-button svg { margin-left: 3px; }
+
+.spark-inset-body { display: flex; flex-direction: column; gap: 0.4rem; }
+.spark-inset-label {
+  font-family: 'JetBrains Mono', 'Space Grotesk', monospace;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-yellow);
+}
+.spark-inset-caption {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin: 0 0 0.4rem;
+  color: var(--paper);
+}
+.spark-inset-cta {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  align-self: flex-start;
+  padding: 0.5rem 0.85rem;
+  background: var(--ink-yellow);
+  color: var(--ink);
+  border: 2px solid var(--paper);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+.spark-inset-cta:hover { background: var(--paper); color: var(--ink); }
+
+/* ============================================================
+   VIDEO MODAL
+   ============================================================ */
+
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.video-modal[hidden] { display: none; }
+.video-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 26, 26, 0.85);
+}
+.video-modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 960px;
+  background: var(--ink);
+  border: var(--border-w) solid var(--paper);
+  padding: 12px;
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink-pink);
+}
+.video-modal-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--ink);
+}
+.video-modal-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.video-modal-close {
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--ink-yellow);
+  color: var(--ink);
+  border: 2.5px solid var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.video-modal-close:hover { background: var(--ink-pink); color: var(--paper); }
+
+/* ============================================================
+   ARTICLE PAGES (about, tips)
+   ============================================================ */
+
+.article {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+.article-hero {
+  padding: 3.5rem 0 2.5rem;
+  text-align: left;
+  border-bottom: var(--border-w) solid var(--ink);
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+.article-hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin: 0 0 1.5rem;
+  position: relative;
+  padding-left: 1.25rem;
+  border-left: 8px solid var(--ink-pink);
+}
+.article-lede {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  font-weight: 500;
+  color: var(--ink-soft);
+  margin: 0;
+  max-width: 60ch;
+}
+
+.article-body { padding-bottom: 4rem; }
+
+.article-section { margin: 2.5rem 0; }
+.article-section h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin: 0 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--ink-pink);
+  display: inline-block;
+}
+.article-section:nth-of-type(even) h2 { border-bottom-color: var(--ink-blue); }
+.article-section:nth-of-type(3n) h2 { border-bottom-color: var(--ink-green); }
+.article-section:nth-of-type(5n) h2 { border-bottom-color: var(--ink-yellow); }
+
+.article-section p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0 0 1rem;
+}
+.article-section em { font-style: italic; }
+.article-section strong { font-weight: 700; }
+
+.pull-quote {
+  margin: 2rem -1rem;
+  padding: 1.5rem 1.75rem;
+  background: var(--ink-yellow);
+  border: var(--border-w) solid var(--ink);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+}
+.pull-quote p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.35rem;
+  line-height: 1.3;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* TIPS PAGE — numbered cards */
+.tip {
+  position: relative;
+  margin: 1.25rem 0;
+  padding: 1.5rem 1.5rem 1.5rem 6rem;
+  background: var(--paper);
+  border: var(--border-w) solid var(--ink);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.tip:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: calc(var(--shadow-offset) + 2px) calc(var(--shadow-offset) + 2px) 0 var(--ink);
+}
+
+.tip-num {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: var(--ink-pink);
+  color: var(--paper);
+  border: 2.5px solid var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.tip:nth-of-type(1) .tip-num { background: var(--ink-pink); }
+.tip:nth-of-type(2) .tip-num { background: var(--ink-blue); }
+.tip:nth-of-type(3) .tip-num { background: var(--ink-yellow); color: var(--ink); }
+.tip:nth-of-type(4) .tip-num { background: var(--ink-green); }
+.tip:nth-of-type(5) .tip-num { background: var(--ink-purple); }
+.tip:nth-of-type(6) .tip-num { background: var(--ink-coral); }
+.tip:nth-of-type(7) .tip-num { background: var(--ink-pink); }
+.tip:nth-of-type(8) .tip-num { background: var(--ink-blue); }
+.tip:nth-of-type(9) .tip-num { background: var(--ink-green); }
+.tip:nth-of-type(10) .tip-num { background: var(--ink-purple); }
+
+.tip h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+.tip p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  line-height: 1.55;
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .home-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hero-stat:nth-child(2) { border-right: none; }
+  .hero-stat:nth-child(1), .hero-stat:nth-child(2) {
+    border-bottom: var(--border-w) solid var(--ink);
+  }
+  .spark-inset {
+    grid-template-columns: 1fr;
+  }
+  .spark-inset-thumb { max-width: 280px; }
+  .tip {
+    padding: 5rem 1.25rem 1.25rem;
+  }
+  .tip-num { top: 1rem; left: 1rem; }
+}
+
+@media (max-width: 600px) {
+  .site-header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .site-nav { width: 100%; }
+  .site-nav a { padding: 0.4rem 0.6rem; font-size: 12px; }
+
+  .home-hero { padding: 2rem 1.25rem; }
+  .home-hero-content h1 { font-size: 3rem; }
+
+  .hero-stats { grid-template-columns: 1fr; }
+  .hero-stat { border-right: none; border-bottom: var(--border-w) solid var(--ink); }
+  .hero-stat:last-child { border-bottom: none; }
+
+  .convo-grid { grid-template-columns: 1fr; }
+
+  .detail-hero { padding: 2rem 1.25rem; }
+  .section-header { flex-wrap: wrap; gap: 0.5rem; }
+  .section-header h2 { font-size: 1.4rem; }
+  .questions li { padding-left: 2.75rem; font-size: 1rem; }
+  .prep-action-btn { font-size: 12px; padding: 0.6rem 0.9rem; }
+
+  .pull-quote { margin: 1.5rem 0; }
+  .article-hero h1 { font-size: 2.25rem; }
+}
+
+/* Print: collapse decoration */
+@media print {
+  .site-header, .site-footer, .prep-zone, .video-modal { display: none; }
+  body { background: white; color: black; }
+  .section, .convo-card, .tip { box-shadow: none; border: 1.5px solid black; }
+}
+
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="index.html" class="site-logo">
+        <svg class="site-logo-mark" viewBox="0 0 36 36" width="22" height="22" aria-hidden="true">
+          <circle cx="18" cy="18" r="4.5" fill="none" stroke="currentColor" stroke-width="1"/>
+          <circle cx="18" cy="6" r="2.2" fill="currentColor"/>
+          <circle cx="28.4" cy="12" r="2.2" fill="currentColor"/>
+          <circle cx="28.4" cy="24" r="2.2" fill="currentColor"/>
+          <circle cx="18" cy="30" r="2.2" fill="currentColor"/>
+          <circle cx="7.6" cy="24" r="2.2" fill="currentColor"/>
+          <circle cx="7.6" cy="12" r="2.2" fill="currentColor"/>
+        </svg>
+        <span>Convos with Colleagues</span>
+      </a>
+      <nav class="site-nav">
+        <a href="about.html">About the Convos</a>
+        <a href="tips.html">Tips for a Great Convo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="home-hero">
+      <div class="home-hero-grid">
+        <div class="home-hero-content">
+          <h1>Convos<br>with Colleagues</h1>
+          <p class="dek">Roundtable discussions about common instructional challenges. For math teachers who are serious about their craft.</p>
+        </div>
+        <aside class="hero-callout">
+          <div class="hero-callout-title">What's in each convo</div>
+          <ul class="hero-callout-list">
+            <li>
+              <span class="hero-callout-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              </span>
+              <div>
+                <strong>Convo Guide</strong>
+                <span>Carefully crafted questions to guide a productive discussion without a facilitator.</span>
+              </div>
+            </li>
+            <li>
+              <span class="hero-callout-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 3 4 13 11 13 8 21 20 9 13 9 16 3 7 3"/></svg>
+              </span>
+              <div>
+                <strong>Spark</strong>
+                <span>A short video, classroom transcript, or piece of student work to ground the discussion.</span>
+              </div>
+            </li>
+            <li>
+              <span class="hero-callout-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+              </span>
+              <div>
+                <strong>Lesson Context</strong>
+                <span>Each spark is contextualized in a high-quality lesson that is mathematically rigorous, conversational, and focused on the real world.</span>
+              </div>
+            </li>
+          </ul>
+        </aside>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">11</div>
+          <div class="hero-stat-label">Topics</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">30–60</div>
+          <div class="hero-stat-label">Min each</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">2–5</div>
+          <div class="hero-stat-label">Participants</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">0</div>
+          <div class="hero-stat-label">Prep needed</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container-wide">
+
+      <section class="theme-section">
+        <header class="theme-header">
+          <h2>Deepening Mathematical Understanding</h2>
+          <div class="theme-lesson">
+            <span class="theme-lesson-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+            </span>
+            <span class="theme-lesson-label">Real-World Math lesson used for Spark:</span>
+            <a class="theme-lesson-link" href="https://www.citizenmath.com/lessons/_template.html?slug=hair-today-gone-tomorrow" target="_blank" rel="noopener"><em>Hair Today, Gone Tomorrow</em></a>
+            <span class="theme-lesson-credit">by Citizen Math</span>
+          </div>
+        </header>
+        <div class="convo-grid">
+
+          <a class="convo-card" href="sequencing-student-work.html">
+            <span class="convo-short">Sequence and Share</span>
+            <span class="convo-question">How should I sequence and share student work?</span>
+            <span class="convo-spark">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="7 3 4 13 11 13 8 21 20 9 13 9 16 3 7 3"/></svg>
+              Student Work
+            </span>
+          </a>
+
+          <a class="convo-card" href="right-answers.html">
+            <span class="convo-short">Right Answers</span>
+            <span class="convo-question">How should I handle students' "right" answers?</span>
+            <span class="convo-spark">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="7 3 4 13 11 13 8 21 20 9 13 9 16 3 7 3"/></svg>
+              Animated Video
+            </span>
+          </a>
+
+          <a class="convo-card" href="wrong-answers.html">
+            <span class="convo-short">Wrong Answers</span>
+            <span class="convo-question">How should I handle students' "wrong" answers?</span>
+            <span class="convo-spark">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="7 3 4 13 11 13 8 21 20 9 13 9 16 3 7 3"/></svg>
+              Animated Video
+            </span>
+          </a>
+
+          <a class="convo-card" href="get-started.html">
+            <span class="convo-short">Get Started</span>
+            <span class="convo-question">How should I help students get started?</span>
+            <span class="convo-spark">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="7 3 4 13 11 13 8 21 20 9 13 9 16 3 7 3"/></svg>
+              Animated Video
+            </span>
+          </a>
+
+        </div>
+      </section>
+
+      <section class="theme-section">
+        <header class="theme-header">
+          <h2>Fostering Student Discourse</h2>
+          <div class="theme-lesson">
+            <span class="theme-lesson-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+            </span>
+            <span class="theme-lesson-label">Real-World Math lesson used for Spark:</span>
+            <a class="theme-lesson-link" href="https://www.citizenmath.com/lessons/_template.html?slug=big-foot-conspiracy" target="_blank" rel="noopener"><em>Big Foot Conspiracy</em></a>
+            <span class="theme-lesson-credit">by Citizen Math</span>
+          </div>
+        </header>
+        <div class="convo-grid">
+
+          <a class="convo-card" href="physical-classroom.html">
+            <span class="convo-short">Physical Classroom</span>
+            <span class="convo-question">How can I arrange my physical classroom?</span>
+            <span class="convo-spark">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="7 3 4 13 11 13 8 21 20 9 13 9 16 3 7 3"/></svg>
+              Animated Video
+            </span>
+          </a>
+
+          <a class="convo-card" href="student-to-student.html">
+            <span class="convo-short">Student-to-Student</span>
+            <span class="convo-question">How can I foster student-to-student discussions?</span>
+            <span class="convo-spark">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="7 3 4 13 11 13 8 21 20 9 13 9 16 3 7 3"/></svg>
+              Animated Video
+            </span>
+          </a>
+
+          <a class="convo-card" href="complex-problems.html">
+            <span class="convo-short">Complex Problems</span>
+            <span class="convo-question">How should I guide my students through complex problems?</span>
+            <span class="convo-spark">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="7 3 4 13 11 13 8 21 20 9 13 9 16 3 7 3"/></svg>
+              Classroom Dialogue
+            </span>
+          </a>
+
+          <a class="convo-card" href="voices-and-perspectives.html">
+            <span class="convo-short">Voices and Perspectives</span>
+            <span class="convo-question">How can I elicit more voices and perspectives?</span>
+            <span class="convo-spark">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="7 3 4 13 11 13 8 21 20 9 13 9 16 3 7 3"/></svg>
+              Animated Video
+            </span>
+          </a>
+
+        </div>
+      </section>
+
+      <section class="theme-section">
+        <header class="theme-header">
+          <h2>Focusing on the Real World</h2>
+          <div class="theme-lesson">
+            <span class="theme-lesson-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+            </span>
+            <span class="theme-lesson-label">Real-World Math lessons used for Spark:</span>
+            <a class="theme-lesson-link" href="https://www.citizenmath.com/lessons/_template.html?slug=big-foot-conspiracy" target="_blank" rel="noopener"><em>Big Foot Conspiracy</em></a><span class="theme-lesson-sep">,</span>
+            <a class="theme-lesson-link" href="https://www.citizenmath.com/lessons/_template.html?slug=seeking-shelter" target="_blank" rel="noopener"><em>Seeking Shelter</em></a><span class="theme-lesson-sep">, &amp;</span>
+            <a class="theme-lesson-link" href="https://www.citizenmath.com/lessons/_template.html?slug=coupon-clipping" target="_blank" rel="noopener"><em>Coupon Clipping</em></a>
+            <span class="theme-lesson-credit">by Citizen Math</span>
+          </div>
+        </header>
+        <div class="convo-grid">
+
+          <a class="convo-card" href="rabbit-holes.html">
+            <span class="convo-short">Rabbit Holes</span>
+            <span class="convo-question">How should I navigate conversational rabbit holes?</span>
+            <span class="convo-spark">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="7 3 4 13 11 13 8 21 20 9 13 9 16 3 7 3"/></svg>
+              Classroom Dialogue
+            </span>
+          </a>
+
+          <a class="convo-card" href="sensitive-topics.html">
+            <span class="convo-short">Sensitive Topics</span>
+            <span class="convo-question">How should I approach conversations about sensitive topics?</span>
+            <span class="convo-spark">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="7 3 4 13 11 13 8 21 20 9 13 9 16 3 7 3"/></svg>
+              Classroom Dialogue
+            </span>
+          </a>
+
+          <a class="convo-card" href="open-ended-questions.html">
+            <span class="convo-short">Open-Ended Questions</span>
+            <span class="convo-question">How can I strengthen students' responses to open-ended questions?</span>
+            <span class="convo-spark">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="7 3 4 13 11 13 8 21 20 9 13 9 16 3 7 3"/></svg>
+              Student Work
+            </span>
+          </a>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>A professional learning resource. Use freely.</p>
+  </footer>
+
+</body>
+</html>
